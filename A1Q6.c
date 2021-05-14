@@ -28,7 +28,6 @@ int main(){
     for(int i=1;i<=10;i++){
         sum1+=empty_arr[i];
         sum2+= empty_arr2[i];
-
     }
     printf("Total cost in 2018: %f",sum1);
     printf("\nTotal cost in 2020: %f",sum2);
