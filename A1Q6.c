@@ -2,36 +2,53 @@
 // Created by Mazz on 2021-05-11.
 //
 #include <stdio.h>
-#include <stdlib.h>
+
+float calculate_total_cost( const float arr[]){
+    float sum=0;
+    for(int i=1;i<=10;i++){
+        sum+=arr[i];
+    }
+    return sum;
+}
+
+float average_total_cost(float arr[]){
+    float price=calculate_total_cost(arr)/10;
+    return price;
+}
+
 int main(){
     FILE* fp;
-    float sum1=0,sum2=0,price1,price2;
-    char buffer[1000],items[100],quantity1[100];
-    float empty_arr[100],empty_arr2[100];
+
+    char buff[1000],items[100],quantity1[100];
+
+    float arr[100],arr2[100],price1,price2;
     int count=0;
+
 
     fp = fopen("C:\\Users\\Mazz\\CLionProjects\\Assignments\\food.txt", "r");
     if(!fp){
         printf("Could not open file");
         return 0;}
 
-    fgets(buffer, 1000, fp);
-    while(feof(fp) == NULL)
+    fgets(buff, 1000, fp);
+    while((int) NULL == feof(fp))
     {
-        sscanf(buffer, "%s%s%f%f", items,quantity1,&price1,&price2);
-        empty_arr[count]=price1;
-        empty_arr2[count]=price2;
+        sscanf(buff, "%s%s%f%f", items, quantity1, &price1, &price2);
+        arr[count]=price1;
+        arr2[count]=price2;
         count++;
-        fgets(buffer, 1000, fp);
+        fgets(buff, 1000, fp);
     }
 
-    for(int i=1;i<=10;i++){
-        sum1+=empty_arr[i];
-        sum2+= empty_arr2[i];
-    }
-    printf("Total cost in 2018: %f",sum1);
-    printf("\nTotal cost in 2020: %f",sum2);
-    printf("\nDifference in total costs: %f",sum1-sum2);
+    float sum1= calculate_total_cost(arr);
+    float sum2=calculate_total_cost(arr2);
+    printf("Total cost in 2018: %f\n",sum1);
+    printf("Total cost in 2020: %f\n",sum2);
+    printf("Difference in total costs: %f\n",sum1-sum2);
+
+    float avg1= average_total_cost(arr);
+    float avg2= average_total_cost(arr2);
+    printf("Difference in average price between 2018 and 2020 is: %f", avg1-avg2);
     fclose(fp);
     return 0;
 }
