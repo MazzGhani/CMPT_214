@@ -1,6 +1,7 @@
 //
 // Created by Mazz on 2021-05-11.
 //
+// Mazz Ghani mag151 11252417 CMPT 214
 #include <stdio.h>
 
 float calculate_total_cost( const float arr[]){
